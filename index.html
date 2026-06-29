@@ -6,60 +6,166 @@
 
 <title>Perubahan Energi</title>
 
+<link rel="preconnect" href="https://www.canva.com">
+
 <style>
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html,body{
-width:100%;
-height:100%;
-overflow:hidden;
-background:#fff;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Inter,Segoe UI,sans-serif;
+
+    background:
+    radial-gradient(circle at top left,#90caf9 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#ce93d8 0%,transparent 35%),
+    linear-gradient(135deg,#edf6ff,#f8fbff,#eef4ff);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Glow Background */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:650px;
+    height:650px;
+    background:#64b5f6;
+    filter:blur(170px);
+    opacity:.18;
+    left:-220px;
+    top:-220px;
+    animation:float1 12s ease-in-out infinite alternate;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:650px;
+    height:650px;
+    background:#ba68c8;
+    filter:blur(170px);
+    opacity:.15;
+    right:-220px;
+    bottom:-220px;
+    animation:float2 14s ease-in-out infinite alternate;
+}
+
+@keyframes float1{
+    from{transform:translate(0,0);}
+    to{transform:translate(80px,50px);}
+}
+
+@keyframes float2{
+    from{transform:translate(0,0);}
+    to{transform:translate(-70px,-40px);}
+}
+
+/* Frame */
+
+.viewer{
+
+    position:relative;
+
+    width:96%;
+    height:94%;
+
+    border-radius:32px;
+
+    overflow:hidden;
+
+    background:white;
+
+    border:1px solid rgba(255,255,255,.6);
+
+    box-shadow:
+
+    0 15px 40px rgba(0,0,0,.08),
+
+    0 40px 100px rgba(0,0,0,.10),
+
+    inset 0 0 0 1px rgba(255,255,255,.6);
+
+    animation:show .8s ease;
+}
+
+@keyframes show{
+
+from{
+
+opacity:0;
+
+transform:scale(.96);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
 }
 
 iframe{
-position:absolute;
-top:0;
-left:0;
+
 width:100%;
+
 height:100%;
+
 border:none;
+
 }
 
-#fullscreenBtn{
-position:fixed;
-top:15px;
-right:15px;
-z-index:9999;
-padding:10px 18px;
-border:none;
-border-radius:10px;
-background:#1976d2;
-color:#fff;
-font-size:15px;
-cursor:pointer;
+/* Mobile */
+
+@media(max-width:768px){
+
+.viewer{
+
+width:100%;
+
+height:100%;
+
+border-radius:0;
+
+box-shadow:none;
+
 }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
-<button id="fullscreenBtn">⛶ Fullscreen</button>
+<div class="viewer">
 
 <iframe
+
 src="https://www.canva.com/design/DAHNliwSaCk/WlvWYSfxbGDf3ol9Xr8HUw/view?embed"
+
 allowfullscreen
-allow="fullscreen">
+
+loading="eager">
+
 </iframe>
 
-<script>
-document.getElementById("fullscreenBtn").onclick=function(){
-document.documentElement.requestFullscreen();
-}
-</script>
+</div>
 
 </body>
+
 </html>
